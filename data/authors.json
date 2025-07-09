@@ -1,0 +1,66 @@
+[
+  {
+    "name": "J.R.R. Tolkien",
+    "bio": "John Ronald Reuel Tolkien foi um escritor, professor e filólogo britânico, autor de obras como 'O Hobbit', 'O Senhor dos Anéis' e 'O Silmarillion'.",
+    "nationality": "Britânico",
+    "photo": "https://exemplo.com/autores/tolkien.jpg",
+    "website": "https://www.tolkienestate.com/",
+    "books": []
+  },
+  {
+    "name": "J.K. Rowling",
+    "bio": "Joanne Rowling, mais conhecida como J.K. Rowling, é uma escritora britânica, autora da série Harry Potter.",
+    "nationality": "Britânica",
+    "photo": "https://exemplo.com/autores/rowling.jpg",
+    "website": "https://www.jkrowling.com/",
+    "books": []
+  },
+  {
+    "name": "George Orwell",
+    "bio": "Eric Arthur Blair, mais conhecido pelo pseudônimo George Orwell, foi um escritor e jornalista inglês, conhecido por suas obras distópicas.",
+    "nationality": "Britânico",
+    "photo": "https://exemplo.com/autores/orwell.jpg",
+    "website": null,
+    "books": []
+  },
+  {
+    "name": "Gabriel García Márquez",
+    "bio": "Gabriel José García Márquez foi um escritor, jornalista e ativista político colombiano, conhecido por obras como 'Cem Anos de Solidão' e 'O Amor nos Tempos do Cólera'.",
+    "nationality": "Colombiano",
+    "photo": "https://exemplo.com/autores/marquez.jpg",
+    "website": null,
+    "books": []
+  },
+  {
+    "name": "Antoine de Saint-Exupéry",
+    "bio": "Antoine Marie Jean-Baptiste Roger de Saint-Exupéry foi um escritor, ilustrador e piloto francês, autor de 'O Pequeno Príncipe'.",
+    "nationality": "Francês",
+    "photo": "https://exemplo.com/autores/saintexupery.jpg",
+    "website": null,
+    "books": []
+  },
+  {
+    "name": "Jane Austen",
+    "bio": "Jane Austen foi uma escritora inglesa conhecida por seus romances que comentam a vida da pequena aristocracia rural britânica.",
+    "nationality": "Britânica",
+    "photo": "https://exemplo.com/autores/austen.jpg",
+    "website": null,
+    "books": []
+  },
+  {
+    "name": "Miguel de Cervantes",
+    "bio": "Miguel de Cervantes Saavedra foi um romancista, dramaturgo e poeta espanhol, autor de 'Dom Quixote', considerada a primeira novela moderna.",
+    "nationality": "Espanhol",
+    "photo": "https://exemplo.com/autores/cervantes.jpg",
+    "website": null,
+    "books": []
+  },
+  {
+    "name": "Fiódor Dostoiévski",
+    "bio": "Fiódor Mikhailovich Dostoiévski foi um escritor russo, considerado um dos maiores romancistas da literatura russa e mundial.",
+    "nationality": "Russo",
+    "photo": "https://exemplo.com/autores/dostoievski.jpg",
+    "website": null,
+    "books": []
+  }
+]
