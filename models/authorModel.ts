@@ -19,8 +19,23 @@ const authorSchema = new Schema<IAuthor>({
 const Author = model<IAuthor>('Author', authorSchema);
 
 export async function authorCreate(author: IAuthor) {
-    console.log('Model =>', author)
+
     return await Author.create(author)
+}
+
+export async function authorUpdate(author: IAuthor, id: string) {
+    return Author.findByIdAndUpdate(id, author, {new: true});
+}
+
+export async function authorDelete(id: string) {
+    await Author.findByIdAndDelete(id)
+}
+
+export async function authorsGet(){
+    return await Author.find();
+}
+export async function authorGetById(id: string) {
+    return await Author.findById(id);
 }
 
 export default Author;

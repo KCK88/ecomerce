@@ -77,6 +77,14 @@ const bookSchema = new Schema<IBook, IBookModel>({
 
 const Book: IBookModel = model<IBook, IBookModel>('Book', bookSchema);
 
+export async function booksGet() {
+	return await  Book.find()
+}
+
+export async function bookByIdGet(id: string) {
+	return await Book.findById(id)
+}
+
 export async function bookCreate(book: IBook) {
 	return await Book.create(book)
 }

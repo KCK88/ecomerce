@@ -30,6 +30,11 @@ export async function deleteBook(req: Request, res: Response) {
 	return res.status(204).end()
 }
 
-export const getBooks = (req: Request, res: Response) => {
-	return res.status(200).json({})
+export async function getBooks (req: Request, res: Response)  {
+	const books = await service.getBooks()
+	return res.status(200).json({books})
+}
+export async function getBookById (req: Request, res: Response)  {
+	const book = await service.getBookById(req.params.id)
+	return res.status(200).json({book})
 }
