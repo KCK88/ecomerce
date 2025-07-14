@@ -12,9 +12,9 @@ const router = express.Router();
 
 router.route('/').post(createBook).get(getBooks)
 
-router.route('/search').get(getBooksByParams)
+router.route('/:page/:limit/search').get(getBooksByParams)
 
-router.route('/category').get(getBooksByCategory)
+router.route('/:page/:limit/category').get(getBooksByCategory)
 
 router.route('/:id').patch(updateBooks).delete(deleteBook).get(getBookById)
 

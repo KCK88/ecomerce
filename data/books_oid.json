@@ -6,7 +6,9 @@
     "title": "O Hobbit",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "J.R.R. Tolkien"
       }
     ],
@@ -19,7 +21,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Fantasia Épica"
       }
     ],
@@ -42,7 +46,9 @@
     "title": "Harry Potter e o Prisioneiro de Azkaban",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "J.K. Rowling"
       }
     ],
@@ -55,7 +61,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Fantasia Épica"
       }
     ],
@@ -78,7 +86,9 @@
     "title": "1984",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "George Orwell"
       }
     ],
@@ -91,7 +101,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Ficção Científica"
       }
     ],
@@ -114,7 +126,9 @@
     "title": "Cem Anos de Solidão",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "Gabriel García Márquez"
       }
     ],
@@ -127,7 +141,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Romance Clássico"
       }
     ],
@@ -150,7 +166,9 @@
     "title": "O Pequeno Príncipe",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "Antoine de Saint-Exupéry"
       }
     ],
@@ -163,7 +181,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Aventuras Infantis"
       }
     ],
@@ -186,7 +206,9 @@
     "title": "Orgulho e Preconceito",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "Jane Austen"
       }
     ],
@@ -199,7 +221,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Romance Clássico"
       }
     ],
@@ -222,7 +246,9 @@
     "title": "Dom Quixote",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "Miguel de Cervantes"
       }
     ],
@@ -235,7 +261,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Romance Clássico"
       }
     ],
@@ -258,7 +286,9 @@
     "title": "Crime e Castigo",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "Fiódor Dostoiévski"
       }
     ],
@@ -271,7 +301,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Romance Clássico"
       }
     ],
@@ -294,7 +326,9 @@
     "title": "O Senhor dos Anéis: A Sociedade do Anel",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "J.R.R. Tolkien"
       }
     ],
@@ -307,7 +341,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Fantasia Épica"
       }
     ],
@@ -330,7 +366,9 @@
     "title": "Harry Potter e a Pedra Filosofal",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "J.K. Rowling"
       }
     ],
@@ -343,7 +381,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Fantasia Épica"
       }
     ],
@@ -366,7 +406,9 @@
     "title": "A Revolução dos Bichos",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "George Orwell"
       }
     ],
@@ -379,7 +421,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Ficção Científica"
       }
     ],
@@ -402,7 +446,9 @@
     "title": "O Amor nos Tempos do Cólera",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "Gabriel García Márquez"
       }
     ],
@@ -415,7 +461,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Romance Clássico"
       }
     ],
@@ -438,7 +486,9 @@
     "title": "O Silmarillion",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "J.R.R. Tolkien"
       }
     ],
@@ -451,7 +501,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Fantasia Épica"
       }
     ],
@@ -474,7 +526,9 @@
     "title": "Harry Potter e as Relíquias da Morte",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "J.K. Rowling"
       }
     ],
@@ -487,7 +541,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Fantasia Épica"
       }
     ],
@@ -510,7 +566,9 @@
     "title": "O Processo",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "Franz Kafka"
       }
     ],
@@ -523,7 +581,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Ficção Científica"
       }
     ],
@@ -546,7 +606,9 @@
     "title": "A Metamorfose",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "Franz Kafka"
       }
     ],
@@ -559,7 +621,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Ficção Científica"
       }
     ],
@@ -582,7 +646,9 @@
     "title": "O Grande Gatsby",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "F. Scott Fitzgerald"
       }
     ],
@@ -595,7 +661,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Romance Clássico"
       }
     ],
@@ -618,7 +686,9 @@
     "title": "Moby Dick",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "Herman Melville"
       }
     ],
@@ -631,7 +701,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Romance Clássico"
       }
     ],
@@ -654,7 +726,9 @@
     "title": "Ulisses",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "James Joyce"
       }
     ],
@@ -667,7 +741,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Romance Clássico"
       }
     ],
@@ -690,7 +766,9 @@
     "title": "A Divina Comédia",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "Dante Alighieri"
       }
     ],
@@ -703,7 +781,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Romance Clássico"
       }
     ],
@@ -726,7 +806,9 @@
     "title": "O Iluminado",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "Stephen King"
       }
     ],
@@ -739,7 +821,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Terror Psicológico"
       }
     ],
@@ -762,7 +846,9 @@
     "title": "It: A Coisa",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "Stephen King"
       }
     ],
@@ -775,7 +861,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Terror Psicológico"
       }
     ],
@@ -798,7 +886,9 @@
     "title": "O Apanhador no Campo de Centeio",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "J.D. Salinger"
       }
     ],
@@ -811,7 +901,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Romance Clássico"
       }
     ],
@@ -834,7 +926,9 @@
     "title": "Lolita",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "Vladimir Nabokov"
       }
     ],
@@ -847,7 +941,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Romance Clássico"
       }
     ],
@@ -870,7 +966,9 @@
     "title": "O Sol é para Todos",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "Harper Lee"
       }
     ],
@@ -883,7 +981,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Romance Clássico"
       }
     ],
@@ -906,7 +1006,9 @@
     "title": "As Crônicas de Nárnia: O Leão, a Feiticeira e o Guarda-Roupa",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "C.S. Lewis"
       }
     ],
@@ -919,7 +1021,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Aventuras Infantis"
       }
     ],
@@ -942,7 +1046,9 @@
     "title": "O Nome da Rosa",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "Umberto Eco"
       }
     ],
@@ -955,7 +1061,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Romance Clássico"
       }
     ],
@@ -978,7 +1086,9 @@
     "title": "O Guia do Mochileiro das Galáxias",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "Douglas Adams"
       }
     ],
@@ -991,7 +1101,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Ficção Científica"
       }
     ],
@@ -1014,7 +1126,9 @@
     "title": "A Menina que Roubava Livros",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "Markus Zusak"
       }
     ],
@@ -1027,7 +1141,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Romance Clássico"
       }
     ],
@@ -1050,7 +1166,9 @@
     "title": "A Sombra do Vento",
     "authors": [
       {
-        "_id": "686e82bf508e3d440dea8b80",
+        "_id": {
+          "$oid": "686e82bf508e3d440dea8b80"
+        },
         "name": "Carlos Ruiz Zafón"
       }
     ],
@@ -1063,7 +1181,9 @@
     "language": "Português",
     "categories": [
       {
-        "_id": "68717569013eebb2ca6e7857",
+        "_id": {
+          "$oid": "68717569013eebb2ca6e7857"
+        },
         "genre": "Romance Clássico"
       }
     ],

@@ -22,7 +22,7 @@ export async function createBook(req: Request, res: Response): Promise<IBook | R
 export async function updateBooks(req: Request, res: Response): Promise<IBook | Record<string, any>> {
     const id = req.params.id;
     const toUpdate = req.body
-    const updatedBook = await service.updateBook(toUpdate, id)
+    const updatedBook: IBook | null = await service.updateBook(toUpdate, id)
     return res.status(200).json({updatedBook})
 }
 
@@ -34,7 +34,7 @@ export async function deleteBook(req: Request, res: Response): Promise<void | Re
 
 export async function getBooks(req: Request, res: Response): Promise<IBook[] | Record<string, any>> {
     const books = await service.getBooks()
-    return res.status(200).json({books})
+    return res.status(200).json({results:books.length, data: books})
 }
 
 export async function getBookById(req: Request, res: Response): Promise<IBook | Record<string, any>> {
@@ -43,24 +43,16 @@ export async function getBookById(req: Request, res: Response): Promise<IBook | 
 }
 
 export async function getBooksByParams(req: Request, res: Response): Promise<IBook[] | Record<string, any>> {
-    const params = req.query.key
-    const search = await Book.find({
-        $or: [
-            {title: {$regex: params, $options: 'i'}},
-            {"authors.name": {$regex: params, $options: 'i'}},
-            {publisher: {$regex: params, $options: 'i'}},
-            {"categories.genre": {$regex: params, $options: 'i'}}
-        ]
-    });
+    const params = typeof req.query.key === 'string' ? req.query.key : ''
+    const {page, limit} = req.params
+    const search = await service.getBooksByParams(page, limit, params)
     return res.status(200).json({search})
 }
 
 export async function getBooksByCategory(req: Request, res: Response): Promise<IBook[] | Record<string, any>> {
-    const params = req.query.key
-    console.log(params)
-    const search = await Book.find({
-        $or: [{"categories.genre": {$regex: params, $options: 'i'}}]
-    })
+    const genre = typeof req.query.key === 'string' ? req.query.key : ''
+    const {page, limit} = req.params
+    const search = await service.getBooksByCategory(page, limit, genre)
     return res.status(200).json({search})
 }
 

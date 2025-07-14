@@ -62,5 +62,117 @@
     "photo": "https://exemplo.com/autores/dostoievski.jpg",
     "website": null,
     "books": []
+  },
+  {
+    "name": "Franz Kafka",
+    "bio": "Franz Kafka foi um escritor tcheco de língua alemã, conhecido por suas obras que exploram temas como alienação, burocracia e absurdo.",
+    "nationality": "Tcheco",
+    "photo": "https://exemplo.com/autores/kafka.jpg",
+    "website": null,
+    "books": []
+  },
+  {
+    "name": "F. Scott Fitzgerald",
+    "bio": "Francis Scott Key Fitzgerald foi um escritor americano, conhecido por retratar a era do jazz em obras como 'O Grande Gatsby'.",
+    "nationality": "Americano",
+    "photo": "https://exemplo.com/autores/fitzgerald.jpg",
+    "website": null,
+    "books": []
+  },
+  {
+    "name": "Herman Melville",
+    "bio": "Herman Melville foi um escritor, poeta e ensaísta americano, autor de 'Moby Dick', uma das obras mais importantes da literatura mundial.",
+    "nationality": "Americano",
+    "photo": "https://exemplo.com/autores/melville.jpg",
+    "website": null,
+    "books": []
+  },
+  {
+    "name": "James Joyce",
+    "bio": "James Joyce foi um escritor irlandês, conhecido por suas obras inovadoras, como 'Ulisses' e 'Finnegans Wake'.",
+    "nationality": "Irlandês",
+    "photo": "https://exemplo.com/autores/joyce.jpg",
+    "website": null,
+    "books": []
+  },
+  {
+    "name": "Dante Alighieri",
+    "bio": "Dante Alighieri foi um poeta italiano, autor de 'A Divina Comédia', uma das obras mais importantes da literatura mundial.",
+    "nationality": "Italiano",
+    "photo": "https://exemplo.com/autores/dante.jpg",
+    "website": null,
+    "books": []
+  },
+  {
+    "name": "Stephen King",
+    "bio": "Stephen King é um escritor americano, conhecido por seus livros de terror, suspense e ficção sobrenatural.",
+    "nationality": "Americano",
+    "photo": "https://exemplo.com/autores/king.jpg",
+    "website": "https://stephenking.com/",
+    "books": []
+  },
+  {
+    "name": "J.D. Salinger",
+    "bio": "Jerome David Salinger foi um escritor americano, conhecido por seu romance 'O Apanhador no Campo de Centeio'.",
+    "nationality": "Americano",
+    "photo": "https://exemplo.com/autores/salinger.jpg",
+    "website": null,
+    "books": []
+  },
+  {
+    "name": "Vladimir Nabokov",
+    "bio": "Vladimir Vladimirovich Nabokov foi um escritor russo-americano, conhecido por obras como 'Lolita' e 'Pnin'.",
+    "nationality": "Russo",
+    "photo": "https://exemplo.com/autores/nabokov.jpg",
+    "website": null,
+    "books": []
+  },
+  {
+    "name": "Harper Lee",
+    "bio": "Nelle Harper Lee foi uma escritora americana, conhecida por seu romance 'O Sol é para Todos', que aborda temas de racismo e injustiça.",
+    "nationality": "Americano",
+    "photo": "https://exemplo.com/autores/lee.jpg",
+    "website": null,
+    "books": []
+  },
+  {
+    "name": "C.S. Lewis",
+    "bio": "Clive Staples Lewis foi um escritor britânico, conhecido por suas obras de ficção, teologia e literatura infantil, como 'As Crônicas de Nárnia'.",
+    "nationality": "Britânico",
+    "photo": "https://exemplo.com/autores/lewis.jpg",
+    "website": null,
+    "books": []
+  },
+  {
+    "name": "Umberto Eco",
+    "bio": "Umberto Eco foi um escritor, filósofo e semiólogo italiano, conhecido por obras como 'O Nome da Rosa' e 'O Pêndulo de Foucault'.",
+    "nationality": "Italiano",
+    "photo": "https://exemplo.com/autores/eco.jpg",
+    "website": null,
+    "books": []
+  },
+  {
+    "name": "Douglas Adams",
+    "bio": "Douglas Noël Adams foi um escritor e roteirista britânico, conhecido por sua série 'O Guia do Mochileiro das Galáxias'.",
+    "nationality": "Britânico",
+    "photo": "https://exemplo.com/autores/adams.jpg",
+    "website": null,
+    "books": []
+  },
+  {
+    "name": "Markus Zusak",
+    "bio": "Markus Zusak é um escritor australiano, conhecido por seu romance 'A Menina que Roubava Livros'.",
+    "nationality": "Australiano",
+    "photo": "https://exemplo.com/autores/zusak.jpg",
+    "website": null,
+    "books": []
+  },
+  {
+    "name": "Carlos Ruiz Zafón",
+    "bio": "Carlos Ruiz Zafón foi um escritor espanhol, conhecido por sua série 'O Cemitério dos Livros Esquecidos', que inclui 'A Sombra do Vento'.",
+    "nationality": "Espanhol",
+    "photo": "https://exemplo.com/autores/zafon.jpg",
+    "website": null,
+    "books": []
   }
 ]
