@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Ficção Científica",
+    "ageGroup": "adulto",
+    "genre": "ficção"
+  },
+  {
+    "name": "Fantasia Épica",
+    "ageGroup": "jovem-adulto",
+    "genre": "fantasia"
+  },
+  {
+    "name": "Aventuras Infantis",
+    "ageGroup": "infantil",
+    "genre": "infantil"
+  },
+  {
+    "name": "História Mundial",
+    "ageGroup": "adulto",
+    "genre": "história"
+  },
+  {
+    "name": "Autoajuda",
+    "ageGroup": "todos",
+    "genre": "autoajuda"
+  },
+  {
+    "name": "Romance Clássico",
+    "ageGroup": "adulto",
+    "genre": "romance"
+  },
+  {
+    "name": "Terror Psicológico",
+    "ageGroup": "jovem-adulto",
+    "genre": "terror"
+  },
+  {
+    "name": "Biografias Inspiradoras",
+    "ageGroup": "adulto",
+    "genre": "biografia"
+  },
+  {
+    "name": "Poesia Contemporânea",
+    "ageGroup": "todos",
+    "genre": "poesia"
+  },
+  {
+    "name": "Ciência Popular",
+    "ageGroup": "jovem-adulto",
+    "genre": "ciência"
+  }
+]
