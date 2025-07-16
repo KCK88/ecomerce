@@ -8,7 +8,6 @@ import {
     searchBooksByCategory,
     searchBooksByParams
 } from "../models/bookModel";
-import {SearchParams} from "../types/SearchParams";
 
 async function createBook(book: IBook): Promise<IBook> {
     return await bookCreate(book)
@@ -37,7 +36,7 @@ async function getBooksByParams(page: string, limit: string, params: string): Pr
 }
 
 async function getBooksByCategory(page: string, limit: string, genre: string): Promise<IBook[]> {
-    const search = await searchBooksByCategory(Number(page), Number(limit), genre)
+    const search: IBook[] = await searchBooksByCategory(Number(page), Number(limit), genre)
     return search
 }
 

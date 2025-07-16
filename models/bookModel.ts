@@ -100,7 +100,7 @@ export async function bookDelete(id: string): Promise<void> {
 }
 
 export async function searchBooksByCategory(page: number, limit: number, genre: string): Promise<IBook[]> {
-  const search = await Book.find({
+  return await Book.find({
     "categories": {
       $elemMatch: {
         "genre": {$regex: genre, $options: 'i'}
@@ -110,12 +110,10 @@ export async function searchBooksByCategory(page: number, limit: number, genre: 
     .skip(page * limit)
     .limit(limit)
     .exec();
-
-  return search;
 }
 
 export async function searchBooksByParams(page: number, limit: number, params: string): Promise<IBook[]> {
-  const search = await Book.aggregate([
+  return await Book.aggregate([
     {
       $match: {
         $or: [
@@ -142,9 +140,7 @@ export async function searchBooksByParams(page: number, limit: number, params: s
     },
     {$skip: page * limit},
     {$limit: limit}
-  ]).exec();
-
-  return search
+  ]).exec()
 }
 
 export default Book;
