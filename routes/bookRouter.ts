@@ -2,7 +2,7 @@ import express from 'express';
 import {
     createBook,
     deleteBook,
-    getBookById,
+    getBookById, getBookimage,
     getBooks, getBooksByCategory,
     getBooksByParams,
     updateBooks
@@ -17,5 +17,7 @@ router.route('/:page/:limit/search').get(getBooksByParams)
 router.route('/:page/:limit/category').get(getBooksByCategory)
 
 router.route('/:id').patch(updateBooks).delete(deleteBook).get(getBookById)
+
+router.route('/:id/cover').get(getBookimage)
 
 export default router;

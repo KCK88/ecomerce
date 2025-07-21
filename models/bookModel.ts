@@ -1,12 +1,8 @@
-import {Model, model, Schema} from 'mongoose';
+import { model, Schema} from 'mongoose';
 import {IBook, LightweightAuthorSchema, LightweightCategorySchema} from "../interfaces/IBook";
 
 
-interface IBookModel extends Model<IBook> {
-
-}
-
-const bookSchema = new Schema<IBook, IBookModel>({
+const bookSchema = new Schema<IBook>({
   title: {
     type: String,
     required: true,
@@ -77,14 +73,17 @@ bookSchema.index({ "authors.name": 1 });
 bookSchema.index({"publisher": 1 });
 bookSchema.index({"title": 1 });
 
-const Book: IBookModel = model<IBook, IBookModel>('Book', bookSchema);
+const Book = model<IBook>('Book', bookSchema);
 
 export async function booksGet(): Promise<IBook[]> {
   return await Book.find().limit(15).exec()
 }
 
 export async function bookByIdGet(id: string): Promise<IBook | null> {
-  return await Book.findById(id)
+  return await Book.findById(id)}
+
+export async function getImageBook(id: string): Promise<IBook | null> {
+  return await Book.findById(id).select('coverImage')
 }
 
 export async function bookCreate(book: IBook): Promise<IBook> {
