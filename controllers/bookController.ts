@@ -31,8 +31,8 @@ export async function getBookById(req: Request, res: Response): Promise<IBook | 
 }
 
 export async function getBookimage(req: Request, res: Response): Promise<IBook | Record<string, any>> {
-  const book = await service.getBookImage(req.params.id);
-  return res.status(200).json({book});
+  const image = await service.getBookImage(req.params.id);
+  return res.status(200).json({image});
 }
 
 export async function getBooksByParams(req: Request, res: Response): Promise<IBook[] | Record<string, any>> {
