@@ -40,4 +40,8 @@ export async function categoryCreate(category: IBookCategory) {
     return await BookCategory.create(category);
 }
 
+export async function findCategories() {
+    return await BookCategory.find();
+}
+
 export default BookCategory;

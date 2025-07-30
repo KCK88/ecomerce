@@ -1,9 +1,9 @@
 import express from 'express';
-import {createCategory} from "../controllers/bookCategoryController";
+import {createCategory, getCategories} from "../controllers/bookCategoryController";
 
 const router = express.Router();
 
-router.route('/').post(createCategory)/*.get()*/
+router.route('/').post(createCategory).get(getCategories)
 
 // router.route('/:id').patch().delete().get()
 
