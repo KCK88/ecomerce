@@ -36,27 +36,9 @@ export async function getBookimage(req: Request, res: Response): Promise<IBook |
 }
 
 export async function getBooksByParams(req: Request, res: Response): Promise<IBook[] | Record<string, any>> {
-  const params = typeof req.query.key === 'string' ? req.query.key : '';
+  const params = typeof req.query.params === 'string' ? req.query.params : '';
+  const genre = typeof req.query.genre === 'string' ? req.query.genre : '';
   const {page, limit} = req.params;
-  const data = await service.getBooksByParams(page, limit, params);
+  const data = await service.getBooksByParams(page, limit, params, genre);
   return res.status(200).json({ result:data.length, data});
 }
-
-export async function getBooksByCategory(req: Request, res: Response): Promise<IBook[] | Record<string, any>> {
-  const genre: string = typeof req.query.key === 'string' ? req.query.key : '';
-  const {page, limit} = req.params;
-  const data: IBook[] = await service.getBooksByCategory(page, limit, genre);
-  return res.status(200).json({result:data.length, data});
-}
-
-// const bookRequest = req.body as IBookRequest;
-// console.log(bookRequest);
-// if (!bookRequest.authorId) {
-// 	res.status(400).json({error: 'invalid authorId'});
-// }
-//
-// const newBook = await service.createBook({
-// 	...bookRequest,
-// 	author: bookRequest.authorId,
-// 	categories: bookRequest.categoriesIds
-// } as unknown as IBook)

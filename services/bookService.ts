@@ -4,9 +4,9 @@ import {
     bookCreate,
     bookDelete,
     booksGet,
-    bookUpdate, getImageBook,
-    searchBooksByCategory,
-    searchBooksByParams
+    bookUpdate,
+    getImageBook,
+    searchBooks,
 } from "../models/bookModel";
 import {imageToBase64} from "../utils/imageToBase64";
 
@@ -39,13 +39,8 @@ async function getBookImage(id: string): Promise<string | null> {
     return await imageToBase64(imagePath.coverImage, 'jpg');
 }
 
-async function getBooksByParams(page: string, limit: string, params: string): Promise<IBook[]> {
-    const search = await searchBooksByParams(Number(page), Number(limit), params);
-    return search;
-}
-
-async function getBooksByCategory(page: string, limit: string, genre: string): Promise<IBook[]> {
-    const search: IBook[] = await searchBooksByCategory(Number(page), Number(limit), genre);
+async function getBooksByParams(page: string, limit: string, params: string, genre: string): Promise<IBook[]> {
+    const search = await searchBooks(Number(page), Number(limit), params, genre);
     return search;
 }
 
@@ -57,5 +52,4 @@ export default {
     getBooks,
     getBookById,
     getBooksByParams,
-    getBooksByCategory
 };

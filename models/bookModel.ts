@@ -98,48 +98,54 @@ export async function bookDelete(id: string): Promise<void> {
   await Book.findOneAndDelete({_id: id})
 }
 
-  export async function searchBooksByCategory(page: number, limit: number, genre: string): Promise<IBook[]> {
-    return await Book.find({
-      "categories": {
-        $elemMatch: {
-          "genre": {$regex: genre, $options: 'i'}
-        }
-      }
-    })
-      .skip(page * limit)
-      .limit(limit)
-      .exec();
+export async function searchBooks(
+  page: number,
+  limit: number,
+  searchParams?: string,
+  genre?: string
+): Promise<IBook[]> {
+  const matchStage: any = {};
+
+  if (genre) {
+    matchStage["categories.genre"] = {
+      $regex: genre,
+      $options: 'i'
+    };
   }
 
-  export async function searchBooksByParams(page: number, limit: number, params: string): Promise<IBook[]> {
-    return await Book.aggregate([
-      {
-        $match: {
-          $or: [
-            {title: {$regex: params, $options: 'i'}},
-            {"authors.name": {$regex: params, $options: 'i'}},
-            {publisher: {$regex: params, $options: 'i'}},
-            {"categories.genre": {$regex: params, $options: 'i'}}
-          ]
-        }
-      },
-      {
-        $addFields: {
-          firstAuthor: {$arrayElemAt: ["$authors.name", 0]},
-          firstCategory: {$arrayElemAt: ["$categories.genre", 0]}
-        }
-      },
-      {
-        $sort: {
-          title: 1,
-          firstAuthor: 1,
-          publisher: 1,
-          firstCategory: 1
-        }
-      },
-      {$skip: page * limit},
-      {$limit: limit}
-    ]).exec()
+  if (searchParams) {
+    matchStage.$or = [
+      { title: { $regex: searchParams, $options: 'i' } },
+      { "authors.name": { $regex: searchParams, $options: 'i' } },
+      { publisher: { $regex: searchParams, $options: 'i' } },
+    ];
   }
+
+  const pipeline: any[] = [
+    { $match: matchStage },
+    {
+      $addFields: {
+        firstAuthor: { $arrayElemAt: ["$authors.name", 0] },
+        firstCategory: { $arrayElemAt: ["$categories.genre", 0] }
+      }
+    },
+    {
+      $sort: {
+        title: 1,
+        firstAuthor: 1,
+        publisher: 1,
+        firstCategory: 1
+      }
+    },
+    { $skip: page * limit },
+    { $limit: limit }
+  ];
+
+  if (!searchParams) {
+    pipeline.splice(1, 2);
+  }
+
+  return await Book.aggregate(pipeline).exec();
+}
 
 export default Book;
