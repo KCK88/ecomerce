@@ -1,5 +1,6 @@
 import { model, Schema} from 'mongoose';
 import {IBook, LightweightAuthorSchema, LightweightCategorySchema} from "../interfaces/IBook";
+import {createDiacriticInsensitiveRegex} from "../utils/DiacriticInsensitive";
 
 
 const bookSchema = new Schema<IBook>({
@@ -108,16 +109,17 @@ export async function searchBooks(
 
   if (genre) {
     matchStage["categories.genre"] = {
-      $regex: genre,
+      $regex: createDiacriticInsensitiveRegex(genre).source,
       $options: 'i'
     };
   }
 
   if (searchParams) {
+    const searchRegex = createDiacriticInsensitiveRegex(searchParams);
     matchStage.$or = [
-      { title: { $regex: searchParams, $options: 'i' } },
-      { "authors.name": { $regex: searchParams, $options: 'i' } },
-      { publisher: { $regex: searchParams, $options: 'i' } },
+      { title: { $regex: searchRegex.source, $options: 'i' } },
+      { "authors.name": { $regex: searchRegex.source, $options: 'i' } },
+      { publisher: { $regex: searchRegex.source, $options: 'i' } },
     ];
   }
 
