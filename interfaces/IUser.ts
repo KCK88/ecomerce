@@ -11,4 +11,5 @@ export interface IUser extends Document {
   active?: boolean;
   _id: string;
   comparePassword(candidatePassword: string, userPassword: string): Promise<boolean>;
+  changedPasswordAfter(JWTTimestamp: number):boolean
 }

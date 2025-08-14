@@ -1,4 +1,4 @@
-import { model, Schema} from 'mongoose';
+import {model, Schema} from 'mongoose';
 import {IUser} from "../interfaces/IUser";
 import validator from 'validator';
 import bcrypt from 'bcryptjs';
@@ -33,7 +33,7 @@ const userSchema = new Schema<IUser>(
       type: String,
       required: [true, 'Please confirm your password'],
       validate: {
-        validator: function(pass) {
+        validator: function (pass) {
           return pass === this.password;
         },
         message: 'Passwords are not the same!'
@@ -51,7 +51,7 @@ const userSchema = new Schema<IUser>(
 );
 
 userSchema.pre('save', async function (next) {
-  if(!this.isModified('password')) return (next());
+  if (!this.isModified('password')) return (next());
   this.password = await bcrypt.hash(this.password, 12);
   this.passwordConfirm = undefined;
 
@@ -62,10 +62,27 @@ userSchema.methods.comparePassword = async function (candidatePassword: string, 
   return await bcrypt.compare(candidatePassword, userPassword);
 }
 
+userSchema.methods.changedPasswordAfter = function (JWTTimestamp: number) {
+  if (this.passwordChangedAt) {
+    const changedTimestamp = parseInt(
+      String(this.passwordChangedAt.getTime() / 1000),
+      10
+    );
+
+    return JWTTimestamp < changedTimestamp;
+  }
+
+  return false;
+};
+
 const User = model<IUser>('User', userSchema);
 
-export async function newUser(user: ReqUser):Promise<IUser> {
-  return await  User.create(user);
+export async function newUser(user: ReqUser): Promise<IUser> {
+  return await User.create(user);
+}
+
+export async function loginModel(email: string): Promise<IUser | null> {
+  return await User.findOne({email}).select('+password');
 }
 
 export default User;
