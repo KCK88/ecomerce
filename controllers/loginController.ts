@@ -1,6 +1,6 @@
 import {Request, Response} from "express";
 import {LoginType} from "../interfaces/LoginType";
-import {newToken} from "../auth/jwt";
+import {cookieOptions, newToken} from "../auth/jwt";
 import service from '../services/loginService'
 
 
@@ -17,10 +17,13 @@ export async function login(req: Request, res: Response) {
     return res.status(404).json({message: "User not found"});
   }
 
-  if (!user || !(await  user.comparePassword(password, user.password))) {
+  if (!user || !(await user.comparePassword(password, user.password))) {
     return res.status(401).json({message: "Invalid email or password"});
   }
 
   const token = newToken(user._id)
+
+  res.cookie('Bearer', token, cookieOptions);
+
   return res.status(200).json({token});
 }

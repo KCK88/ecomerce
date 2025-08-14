@@ -6,6 +6,7 @@ import User from "../models/userModel";
 
 export async function protect(req: Request, res: Response, next: NextFunction) {
   let token
+  console.log(req.headers);
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith('Bearer')

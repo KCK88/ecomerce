@@ -1,12 +1,12 @@
 import jwt from 'jsonwebtoken';
-import { verify } from 'jsonwebtoken';
-import ms, { type StringValue } from 'ms';
+import {verify} from 'jsonwebtoken';
+import ms, {type StringValue} from 'ms';
 
 export function newToken(id: string): string {
   const secret = process.env.JWT_SECRET as string;
   const expiresIn: number = ms(process.env.JWT_EXPIRES_IN as StringValue);
 
-  return  jwt.sign({id}, secret, {expiresIn});
+  return jwt.sign({id}, secret, {expiresIn});
 }
 
 
@@ -18,3 +18,10 @@ export function verifyToken(token: string, secret: string): Promise<string | obj
     });
   });
 }
+
+export const cookieOptions = {
+  maxAge: 7776000000 , //process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+  httpOnly: true,
+  secure: true,
+};
+
