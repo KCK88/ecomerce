@@ -1,6 +1,8 @@
 import jwt from 'jsonwebtoken';
 import {verify} from 'jsonwebtoken';
 import ms, {type StringValue} from 'ms';
+import { CookieOptions } from 'express';
+
 
 export function newToken(id: string): string {
   const secret = process.env.JWT_SECRET as string;
@@ -19,9 +21,10 @@ export function verifyToken(token: string, secret: string): Promise<string | obj
   });
 }
 
-export const cookieOptions = {
+export const cookieOptions: CookieOptions = {
   maxAge: 7776000000 , //process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
   httpOnly: true,
+  sameSite: 'none',
   secure: true,
 };
 

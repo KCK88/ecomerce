@@ -5,12 +5,13 @@ import bookCategoryRouter from "./routes/bookCategoryRouter";
 import usersRouter from "./routes/usersRouter";
 import cors from "cors"
 import loginRouter from "./routes/loginRouter";
+import orderRouter from "./routes/orderRouter";
 
 const app = express();
 
 const corsOptions = {
-  origin: 'http://localhost:5173',  // URL do seu frontend
-  credentials: true,  // Permite enviar cookies junto com a requisição
+  origin: 'http://localhost:5173',
+  credentials: true,
 };
 
 app.use(cors(corsOptions))
@@ -22,5 +23,6 @@ app.use('/authors', authorRouter);
 app.use('/categories', bookCategoryRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
+app.use('/orders', orderRouter);
 
 export default app;

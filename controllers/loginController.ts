@@ -5,6 +5,7 @@ import service from '../services/loginService'
 
 
 export async function login(req: Request, res: Response) {
+  console.log(req.headers)
   const {email, password}: LoginType = req.body;
 
   if (!email || !password) {
@@ -25,5 +26,12 @@ export async function login(req: Request, res: Response) {
 
   res.cookie('Bearer', token, cookieOptions);
 
-  return res.status(200).json({token});
+  return res.status(200).json({
+    user: {
+      id: user._id,
+      email: user.email,
+      name: user.name,
+      role: user.role,
+    }, token
+  });
 }
