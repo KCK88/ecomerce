@@ -1,12 +1,12 @@
-import {IBookCategory} from "../interfaces/IBookCategory";
-import {categoryCreate, findCategories} from "../models/bookCategoryModel";
+import { IBookCategory } from "../interfaces/IBookCategory";
+import { categoryCreate, findCategories } from "../models/bookCategoryModel";
 
 async function createCategory(category: IBookCategory) {
-    return await categoryCreate(category)
+  return await categoryCreate(category);
 }
 
 async function getCategories() {
-    return await findCategories()
+  return await findCategories();
 }
 
-export default {createCategory, getCategories}
+export default { createCategory, getCategories };

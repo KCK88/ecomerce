@@ -10,6 +10,9 @@ export interface IUser extends Document {
   passwordResetExpires?: Date;
   active?: boolean;
   _id: string;
-  comparePassword(candidatePassword: string, userPassword: string): Promise<boolean>;
-  changedPasswordAfter(JWTTimestamp: number):boolean
+  comparePassword(
+    candidatePassword: string,
+    userPassword: string,
+  ): Promise<boolean>;
+  changedPasswordAfter(JWTTimestamp: number): boolean;
 }

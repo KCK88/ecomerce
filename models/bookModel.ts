@@ -1,125 +1,146 @@
-import { model, Schema} from 'mongoose';
-import {IBook, LightweightAuthorSchema, LightweightCategorySchema} from "../interfaces/IBook";
-import {createDiacriticInsensitiveRegex} from "../utils/DiacriticInsensitive";
+import { model, Schema } from "mongoose";
+import {
+  IBook,
+  LightweightAuthorSchema,
+  LightweightCategorySchema,
+} from "../interfaces/IBook";
+import { createDiacriticInsensitiveRegex } from "../utils/DiacriticInsensitive";
+import { BookRequest } from "../interfaces/BookRequest";
 
-
-const bookSchema = new Schema<IBook>({
-  title: {
-    type: String,
-    required: true,
-    trim: true
+const bookSchema = new Schema<IBook>(
+  {
+    title: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    authors: {
+      type: [LightweightAuthorSchema],
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    price: {
+      type: Number,
+      required: true,
+      min: 0,
+    },
+    stock: {
+      type: Number,
+      required: true,
+      min: 0,
+      default: 0,
+    },
+    publisher: String,
+    publishedDate: Date,
+    pageCount: Number,
+    language: String,
+    categories: {
+      type: [LightweightCategorySchema],
+    },
+    coverImage: {
+      type: String,
+      required: true,
+    },
+    images: [String],
+    averageRating: {
+      type: Number,
+      min: 0,
+      max: 5,
+      default: 0,
+    },
+    reviewsCount: {
+      type: Number,
+      default: 0,
+    },
+    featured: {
+      type: Boolean,
+      default: false,
+    },
+    discount: {
+      type: Number,
+      min: 0,
+      max: 100,
+      default: 0,
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    },
   },
-  authors: {
-    type: [LightweightAuthorSchema],
-    required: true
+  {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   },
-  description: {
-    type: String,
-    required: true
-  },
-  price: {
-    type: Number,
-    required: true,
-    min: 0
-  },
-  stock: {
-    type: Number,
-    required: true,
-    min: 0,
-    default: 0
-  },
-  publisher: String,
-  publishedDate: Date,
-  pageCount: Number,
-  language: String,
-  categories: {
-    type: [LightweightCategorySchema],
-  },
-  coverImage: {
-    type: String,
-    required: true
-  },
-  images: [String],
-  averageRating: {
-    type: Number,
-    min: 0,
-    max: 5,
-    default: 0
-  },
-  reviewsCount: {
-    type: Number,
-    default: 0
-  },
-  featured: {
-    type: Boolean,
-    default: false
-  },
-  discount: {
-    type: Number,
-    min: 0,
-    max: 100,
-    default: 0
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now
-  }
-}, {
-  toJSON: {virtuals: true},
-  toObject: {virtuals: true}
-});
+);
 
 bookSchema.index({ "categories.genre": 1 });
 bookSchema.index({ "authors.name": 1 });
-bookSchema.index({"publisher": 1 });
-bookSchema.index({"title": 1 });
+bookSchema.index({ publisher: 1 });
+bookSchema.index({ title: 1 });
 
-const Book = model<IBook>('Book', bookSchema);
+const Book = model<IBook>("Book", bookSchema);
 
 export async function booksGet(): Promise<IBook[]> {
-  return await Book.find().limit(15).exec()
+  return await Book.find().limit(15).exec();
+}
+
+export async function findPagedBooks(
+  page: number,
+  limit: number,
+): Promise<IBook[]> {
+  return await Book.find()
+    .skip(page * limit)
+    .limit(limit)
+    .exec();
 }
 
 export async function bookByIdGet(id: string): Promise<IBook | null> {
-  return await Book.findById(id)}
+  return await Book.findById(id);
+}
 
 export async function getImageBook(id: string): Promise<IBook | null> {
-  return await Book.findById(id).select('coverImage')
+  return await Book.findById(id).select("coverImage");
 }
 
-export async function bookCreate(book: IBook): Promise<IBook> {
-  return await Book.create(book)
+export async function bookCreate(book: BookRequest): Promise<IBook> {
+  return await Book.create(book);
 }
 
-export async function bookUpdate(book: IBook, id: string): Promise<IBook | null> {
-  return Book.findByIdAndUpdate(id, book, {new: true});
+export async function bookUpdate(
+  book: IBook,
+  id: string,
+): Promise<IBook | null> {
+  return Book.findByIdAndUpdate(id, book, { new: true });
 }
 
 export async function bookDelete(id: string): Promise<void> {
-  await Book.findOneAndDelete({_id: id})
+  await Book.findOneAndDelete({ _id: id });
 }
 
 export async function searchBooks(
   page: number,
   limit: number,
   searchParams?: string,
-  genre?: string
+  genre?: string,
 ): Promise<IBook[]> {
   const matchStage: any = {};
 
   if (genre) {
     matchStage["categories.genre"] = {
       $regex: createDiacriticInsensitiveRegex(genre).source,
-      $options: 'i'
+      $options: "i",
     };
   }
 
   if (searchParams) {
     const searchRegex = createDiacriticInsensitiveRegex(searchParams);
     matchStage.$or = [
-      { title: { $regex: searchRegex.source, $options: 'i' } },
-      { "authors.name": { $regex: searchRegex.source, $options: 'i' } },
-      { publisher: { $regex: searchRegex.source, $options: 'i' } },
+      { title: { $regex: searchRegex.source, $options: "i" } },
+      { "authors.name": { $regex: searchRegex.source, $options: "i" } },
+      { publisher: { $regex: searchRegex.source, $options: "i" } },
     ];
   }
 
@@ -128,19 +149,19 @@ export async function searchBooks(
     {
       $addFields: {
         firstAuthor: { $arrayElemAt: ["$authors.name", 0] },
-        firstCategory: { $arrayElemAt: ["$categories.genre", 0] }
-      }
+        firstCategory: { $arrayElemAt: ["$categories.genre", 0] },
+      },
     },
     {
       $sort: {
         title: 1,
         firstAuthor: 1,
         publisher: 1,
-        firstCategory: 1
-      }
+        firstCategory: 1,
+      },
     },
     { $skip: page * limit },
-    { $limit: limit }
+    { $limit: limit },
   ];
 
   if (!searchParams) {

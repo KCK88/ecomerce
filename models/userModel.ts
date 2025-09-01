@@ -1,72 +1,73 @@
-import {model, Schema} from 'mongoose';
-import {IUser} from "../interfaces/IUser";
-import validator from 'validator';
-import bcrypt from 'bcryptjs';
-import {ReqUser} from "../interfaces/ReqUser";
+import { model, Schema } from "mongoose";
+import { IUser } from "../interfaces/IUser";
+import validator from "validator";
+import bcrypt from "bcryptjs";
+import { ReqUser } from "../interfaces/ReqUser";
 
-const userSchema = new Schema<IUser>(
-  {
-    name: {
-      type: String,
-      required: [true, 'Please tell us your name!']
+const userSchema = new Schema<IUser>({
+  name: {
+    type: String,
+    required: [true, "Please tell us your name!"],
+  },
+  email: {
+    type: String,
+    required: [true, "Please provide your email"],
+    unique: true,
+    lowercase: true,
+    validate: [validator.isEmail, "Please provide a valid email"],
+  },
+  photo: String,
+  role: {
+    type: String,
+    enum: ["user", "admin"],
+    default: "user",
+  },
+  password: {
+    type: String,
+    required: [true, "Please provide a password"],
+    minlength: 8,
+    select: false,
+  },
+  passwordConfirm: {
+    type: String,
+    required: [true, "Please confirm your password"],
+    validate: {
+      validator: function (pass) {
+        return pass === this.password;
+      },
+      message: "Passwords are not the same!",
     },
-    email: {
-      type: String,
-      required: [true, 'Please provide your email'],
-      unique: true,
-      lowercase: true,
-      validate: [validator.isEmail, 'Please provide a valid email']
-    },
-    photo: String,
-    role: {
-      type: String,
-      enum: ['user', 'admin'],
-      default: 'user'
-    },
-    password: {
-      type: String,
-      required: [true, 'Please provide a password'],
-      minlength: 8,
-      select: false
-    },
-    passwordConfirm: {
-      type: String,
-      required: [true, 'Please confirm your password'],
-      validate: {
-        validator: function (pass) {
-          return pass === this.password;
-        },
-        message: 'Passwords are not the same!'
-      }
-    },
-    passwordChangedAt: Date,
-    passwordResetToken: String,
-    passwordResetExpires: Date,
-    active: {
-      type: Boolean,
-      default: true,
-      select: false
-    }
-  }
-);
+  },
+  passwordChangedAt: Date,
+  passwordResetToken: String,
+  passwordResetExpires: Date,
+  active: {
+    type: Boolean,
+    default: true,
+    select: false,
+  },
+});
 
-userSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) return (next());
+userSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) return next();
   this.password = await bcrypt.hash(this.password, 12);
   this.passwordConfirm = undefined;
 
   next();
-})
+});
 
-userSchema.methods.comparePassword = async function (candidatePassword: string, userPassword: string) {
+userSchema.methods.comparePassword = async function (
+  candidatePassword: string,
+  userPassword: string,
+) {
   return await bcrypt.compare(candidatePassword, userPassword);
-}
+};
 
 userSchema.methods.changedPasswordAfter = function (JWTTimestamp: number) {
   if (this.passwordChangedAt) {
     const changedTimestamp = parseInt(
       String(this.passwordChangedAt.getTime() / 1000),
-      10
+      10,
     );
 
     return JWTTimestamp < changedTimestamp;
@@ -75,14 +76,14 @@ userSchema.methods.changedPasswordAfter = function (JWTTimestamp: number) {
   return false;
 };
 
-const User = model<IUser>('User', userSchema);
+const User = model<IUser>("User", userSchema);
 
 export async function newUser(user: ReqUser): Promise<IUser> {
   return await User.create(user);
 }
 
 export async function loginModel(email: string): Promise<IUser | null> {
-  return await User.findOne({email}).select('+password');
+  return await User.findOne({ email }).select("+password");
 }
 
 export default User;
