@@ -1,18 +1,20 @@
+import {LightweightAuthor, LightweightCategory} from "./IBook";
+
 export type BookRequest = {
-  title: any;
-  authors: any;
-  description: any;
-  price: any;
-  stock: any;
-  publisher: any;
-  publishedDate: any;
-  pageCount: any;
-  language: any;
-  categories: any;
+  title: string;
+  authors: LightweightAuthor[];
+  description: string;
+  price: number;
+  stock: number;
+  publisher: string;
+  publishedDate: string;
+  pageCount: number;
+  language: string;
+  categories: LightweightCategory[];
   coverImage: any;
   images: never[];
-  averageRating: any;
-  reviewsCount: any;
-  featured: any;
-  discount: any;
+  averageRating: number;
+  reviewsCount: number;
+  featured: boolean;
+  discount: number;
 };

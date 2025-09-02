@@ -1,4 +1,5 @@
 import { Document } from "mongoose";
+import {LightweightCategory} from "./IBook";
 
 export interface IBookCategory extends Document {
   name: string;
@@ -12,6 +13,6 @@ export interface IBookCategory extends Document {
   featured?: boolean;
 }
 
-export type ReqCategoryValue = {
-  value: IBookCategory;
+export type CategoryValue = {
+  value: LightweightCategory;
 };

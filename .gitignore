@@ -3,6 +3,7 @@ node_modules/
 .env*
 .cache/
 .idea/
+*.env
 
 # Logs
 logs/

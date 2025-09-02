@@ -1,4 +1,5 @@
 import {Document, Types} from "mongoose";
+import {LightweightAuthor} from "./IBook";
 
 export interface IAuthor extends Document {
   name: string;
@@ -9,9 +10,9 @@ export interface IAuthor extends Document {
   books: string[];
 }
 
-export type ReqAuthorValue = {
-  value: IAuthor;
-};
+export type AuthorValue = {
+  value: LightweightAuthor
+}
 
 export type OptionType = {
   label: string;
