@@ -8,30 +8,15 @@ export async function createBook(
   req: Request,
   res: Response,
 ): Promise<IBook | Record<string, any>> {
+  console.log(req)
+
   const book = {
-    title: req.body.title,
-    authors: req.body.authors.map((a: ReqAuthorValue) => ({
-      _id: a.value.id,
-      name: a.value.name,
-    })),
-    description: req.body.description,
-    price: req.body.price,
-    stock: req.body.stock,
-    publisher: req.body.publisher,
-    publishedDate: req.body.publishedDate,
-    pageCount: req.body.pageCount,
-    language: req.body.language,
-    categories: req.body.categories.map((c: ReqCategoryValue) => ({
-      _id: c.value._id,
-      genre: c.value.genre,
-    })),
-    coverImage: "req.body.coverImage",
-    images: [],
-    averageRating: req.body.averageRating,
-    reviewsCount: req.body.reviewsCount,
-    featured: req.body.features,
-    discount: req.body.discount,
+    ...req.body,
+    authors: Array.isArray(req.body.authors) ? req.body.authors : [],
+    categories: Array.isArray(req.body.categories) ? req.body.categories : [],
+    coverImage: (req.files as Express.Multer.File[])?.[0]?.filename || 'default.png',
   };
+  // const book = req.body
   const newBook = await service.createBook(book);
   return res.status(201).json({ newBook });
 }
@@ -40,11 +25,13 @@ export async function updateBooks(
   req: Request,
   res: Response,
 ): Promise<IBook | Record<string, any>> {
-  console.log('====================', req.body.coverImage[0].name);
+  console.log('====================', req.body);
   const id = req.params.id;
   const toUpdate = {
     ...req.body,
-    coverImage: req.body.coverImage[0].name,
+    authors: Array.isArray(req.body.authors) ? req.body.authors : [],
+    categories: Array.isArray(req.body.categories) ? req.body.categories : [],
+    coverImage: (req.files as Express.Multer.File[])?.[0]?.filename || req.body.coverImage,
     images: [],
     discount: req.body.discount / 100,
   };

@@ -13,7 +13,7 @@ import { uploadCoverImage } from "../middleware/uploadCover";
 
 const router = express.Router();
 
-router.route("/").post(uploadCoverImage, createBook).get(getBooks);
+router.route("/").post(/*uploadCoverImage,*/ createBook).get(getBooks);
 
 router.route("/:page/:limit/search").get(getBooksByParams);
 
