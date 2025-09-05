@@ -1,4 +1,4 @@
-import { IAuthor } from "../interfaces/IAuthor";
+import {IAuthor, ValueType} from "../interfaces/IAuthor";
 import Author, {
   authorCreate,
   authorDelete,
@@ -7,7 +7,7 @@ import Author, {
   authorUpdate,
 } from "../models/authorModel";
 
-export async function createAuthor(author: IAuthor) {
+export async function createAuthor(author: ValueType) {
   return await authorCreate(author);
 }
 

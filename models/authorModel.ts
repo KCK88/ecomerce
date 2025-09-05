@@ -1,6 +1,6 @@
 import { model, Schema } from "mongoose";
 
-import { IAuthor } from "../interfaces/IAuthor";
+import {IAuthor, ValueType} from "../interfaces/IAuthor";
 
 const authorSchema = new Schema<IAuthor>({
   name: {
@@ -17,7 +17,7 @@ const authorSchema = new Schema<IAuthor>({
 
 const Author = model<IAuthor>("Author", authorSchema);
 
-export async function authorCreate(author: IAuthor) {
+export async function authorCreate(author: ValueType) {
   return await Author.create(author);
 }
 

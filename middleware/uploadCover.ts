@@ -2,24 +2,7 @@ import AppError from "../utils/AppError";
 import multer, { FileFilterCallback } from 'multer';
 import { Request } from 'express';
 
-type DestinationCallback = (error: Error | null, destination: string) => void;
-type FileNameCallback = (error: Error | null, filename: string) => void;
-
-const multerStorage = multer.diskStorage({
-  destination: (
-    req: Request,
-    _file: Express.Multer.File,
-    cb: DestinationCallback) => {
-    cb(null, "images");
-  },
-  filename: (
-    req: Request,
-    file: Express.Multer.File,
-    cb: FileNameCallback) => {
-    const extension = file.mimetype.split("/")[1];
-    cb(null, `${req.body.title}_0.${extension}`);
-  },
-});
+const multerStorage = multer.memoryStorage();
 
 const multerFilter = (
   req: Request,

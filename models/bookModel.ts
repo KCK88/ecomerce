@@ -42,7 +42,6 @@ const bookSchema = new Schema<IBook>(
     },
     coverImage: {
       type: String,
-      required: true,
     },
     images: [String],
     averageRating: {

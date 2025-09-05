@@ -7,7 +7,7 @@ export interface IAuthor extends Document {
   nationality?: string;
   photo?: string;
   website?: string;
-  books: string[];
+  books?: string[];
 }
 
 export type AuthorValue = {
@@ -16,16 +16,16 @@ export type AuthorValue = {
 
 export type OptionType = {
   label: string;
-  value: valueType[]
+  value: ValueType[]
 };
 
-export type valueType = {
+export type ValueType = {
   bio:  string;
-  books:  string[];
+  books?:  string[];
   name: string;
   nationality: string;
-  photo: string;
+  photo?: string;
   website: string;
-  _id: string;
+  _id?: string;
 };
 

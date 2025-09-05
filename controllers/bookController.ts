@@ -4,6 +4,8 @@ import {IBook, LightweightAuthor, LightweightCategory} from "../interfaces/IBook
 import {BookRequest} from "../interfaces/BookRequest";
 import {AuthorValue} from "../interfaces/IAuthor";
 import {CategoryValue} from "../interfaces/IBookCategory";
+import { promises as fs } from 'fs';
+import path from 'path';
 
 export async function createBook(
   req: Request,
@@ -39,11 +41,29 @@ export async function createBook(
   categories = categories.map((category: CategoryValue) => ({genre: category.value.genre, _id: category.value._id}))
 
   const files = req.files as { [fieldname: string]: Express.Multer.File[] };
+  let coverImageFilename = 'default.png';
+
+  if (files?.coverImage?.[0] && req.body.title) {
+    const coverImageFile = files.coverImage[0];
+    const extension = coverImageFile.mimetype.split('/')[1];
+    const sanitizedTitle = req.body.title.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+    coverImageFilename = `${sanitizedTitle}_cover-${Date.now()}.${extension}`;
+    const imagePath = path.join('images', coverImageFilename);
+
+    try {
+      await fs.mkdir('images', { recursive: true });
+      await fs.writeFile(imagePath, coverImageFile.buffer);
+    } catch (error) {
+      console.error('Error saving cover image:', error);
+      return res.status(500).json({ message: 'Error saving cover image' });
+    }
+  }
+
   const book: BookRequest = {
     ...req.body,
     authors: Array.isArray(authors) ? authors : [],
     categories: Array.isArray(categories) ? categories : [],
-    coverImage: files?.coverImage?.[0]?.filename || 'default.png',
+    coverImage: `images/${coverImageFilename}`,
     images: [],
     price: req.body.price ? Number(req.body.price) : 0,
     stock: req.body.stock ? Number(req.body.stock) : 0,
@@ -62,7 +82,6 @@ export async function updateBooks(
   req: Request,
   res: Response,
 ): Promise<IBook | Response> {
-
   const id = req.params.id;
 
   // Parse authors and categories from JSON strings if they exist
@@ -97,16 +116,39 @@ export async function updateBooks(
   authors = authors.map((author: AuthorValue): LightweightAuthor => ({name: author.value.name, _id: author.value._id}))
   categories = categories.map((category: CategoryValue): LightweightCategory => ({genre: category.value.genre, _id: category.value._id}))
 
-  const toUpdate: IBook = {
+  let coverImageFilename = req.body.coverImage;
+  const files = req.files as { [fieldname: string]: Express.Multer.File[] };
+
+  if (files?.coverImage?.[0] && (req.body.title || req.body.name)) {
+    const coverImageFile = files.coverImage[0];
+    const extension = coverImageFile.mimetype.split('/')[1];
+    const title = req.body.title || req.body.name;
+    const sanitizedTitle = title.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+    coverImageFilename = `${sanitizedTitle}_cover-${Date.now()}.${extension}`;
+    const imagePath = path.join('images', coverImageFilename);
+
+    try {
+      await fs.mkdir('images', { recursive: true });
+      await fs.writeFile(imagePath, coverImageFile.buffer);
+    } catch (error) {
+      console.error('Error saving cover image:', error);
+      return res.status(500).json({ message: 'Error saving cover image' });
+    }
+  }
+
+  const updateData: Partial<IBook> = {
     ...req.body,
     authors: Array.isArray(authors) ? authors : [],
     categories: Array.isArray(categories) ? categories : [],
-    coverImage: (req.files as {
-      [fieldname: string]: Express.Multer.File[]
-    })?.coverImage?.[0]?.filename || req.body.coverImage,
     images: [],
     discount: req.body.discount ? Number(req.body.discount) / 100 : 0,
   };
+
+  if (coverImageFilename) {
+    updateData.coverImage = `images/${coverImageFilename}`;
+  }
+
+  const toUpdate: IBook = updateData as IBook;
   const updatedBook: IBook | null = await service.updateBook(toUpdate, id);
   return res.status(200).json({ updatedBook });
 }

@@ -17,20 +17,6 @@ const bookCategorySchema = new Schema<IBookCategory>({
   genre: {
     type: String,
     required: true,
-    enum: [
-      "ficção",
-      "não-ficção",
-      "biografia",
-      "poesia",
-      "drama",
-      "terror",
-      "romance",
-      "fantasia",
-      "ciência",
-      "história",
-      "autoajuda",
-      "infantil",
-    ],
   },
   featured: {
     type: Boolean,
