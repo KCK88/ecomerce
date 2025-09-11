@@ -4,7 +4,7 @@ import {
   LightweightAuthorSchema,
   LightweightCategorySchema,
 } from "../interfaces/IBook";
-import { createDiacriticInsensitiveRegex } from "../utils/DiacriticInsensitive";
+import { createDiacriticInsensitiveRegex } from "../utils/diacriticInsensitive";
 import { BookRequest } from "../interfaces/BookRequest";
 
 const bookSchema = new Schema<IBook>(
