@@ -38,6 +38,23 @@ const userSchema = new Schema<IUser>({
       message: "Passwords are not the same!",
     },
   },
+  addresses: [{
+    street: String,
+    number: String,
+    complement: String,
+    neighborhood: String,
+    city: String,
+    state: String,
+    zipCode: String,
+    country: {
+      type: String,
+      default: "Brazil",
+    },
+    isDefault: {
+      type: Boolean,
+      default: false,
+    },
+  }],
   passwordChangedAt: Date,
   passwordResetToken: String,
   passwordResetExpires: Date,
@@ -84,6 +101,10 @@ export async function newUser(user: ReqUser): Promise<IUser> {
 
 export async function loginModel(email: string): Promise<IUser | null> {
   return await User.findOne({ email }).select("+password");
+}
+
+export async function findUserById(id: string): Promise<IUser | null> {
+  return await User.findById(id);
 }
 
 export default User;

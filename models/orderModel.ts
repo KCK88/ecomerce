@@ -12,6 +12,23 @@ const orderSchema = new Schema<IOrder>(
       type: String,
       required: true,
     },
+    address: {
+      street: String,
+      number: String,
+      complement: String,
+      neighborhood: String,
+      city: String,
+      state: String,
+      zipCode: String,
+      country: {
+        type: String,
+        default: "Brazil",
+      },
+      isDefault: {
+        type: Boolean,
+        default: false,
+      },
+    },
   },
   { timestamps: true },
 );

@@ -1,4 +1,5 @@
 import { Schema } from "mongoose";
+import {Address} from "./IUser";
 
 export const booksOrderSchema = new Schema({
   title: {
@@ -59,5 +60,6 @@ export interface BooksOrder {
 
 export interface IOrder {
   books: BooksOrder[];
+  address: Address
   userId: string;
 }
