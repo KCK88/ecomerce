@@ -1,5 +1,5 @@
-import { IUser } from "../interfaces/IUser";
-import {findUserById, newUser} from "../models/userModel";
+import {Address, IUser} from "../interfaces/IUser";
+import {findUserById, modifyUserAddress, newUser} from "../models/userModel";
 import { ReqUser } from "../interfaces/ReqUser";
 
 async function createUser(user: ReqUser): Promise<IUser> {
@@ -10,4 +10,8 @@ async function getUserById(userId: string): Promise<IUser | null> {
   return  await findUserById(userId);
 }
 
-export default { createUser, getUserById };
+async function updateUserAddress(id: string, address: Address): Promise<IUser | null> {
+  return await modifyUserAddress(id, address);
+}
+
+export default { createUser, getUserById, updateUserAddress };

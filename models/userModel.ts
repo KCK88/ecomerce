@@ -1,8 +1,8 @@
-import { model, Schema } from "mongoose";
-import { IUser } from "../interfaces/IUser";
+import {model, Schema} from "mongoose";
+import {Address, IUser} from "../interfaces/IUser";
 import validator from "validator";
 import bcrypt from "bcryptjs";
-import { ReqUser } from "../interfaces/ReqUser";
+import {ReqUser} from "../interfaces/ReqUser";
 
 const userSchema = new Schema<IUser>({
   name: {
@@ -48,7 +48,7 @@ const userSchema = new Schema<IUser>({
     zipCode: String,
     country: {
       type: String,
-      default: "Brazil",
+      default: "Brasil",
     },
     isDefault: {
       type: Boolean,
@@ -100,11 +100,25 @@ export async function newUser(user: ReqUser): Promise<IUser> {
 }
 
 export async function loginModel(email: string): Promise<IUser | null> {
-  return await User.findOne({ email }).select("+password");
+  return await User.findOne({email}).select("+password");
 }
 
 export async function findUserById(id: string): Promise<IUser | null> {
   return await User.findById(id);
+}
+
+export async function modifyUserAddress(id: string, address: Address): Promise<IUser | null> {
+  return await User.findByIdAndUpdate(
+    id,
+    {
+      $push: {
+        addresses: [
+          address
+        ]
+      },
+    },
+    { new: true, runValidators: true }
+    ).exec();
 }
 
 export default User;
