@@ -6,6 +6,7 @@ import usersRouter from "./routes/usersRouter";
 import cors from "cors";
 import loginRouter from "./routes/loginRouter";
 import orderRouter from "./routes/orderRouter";
+import bulkRouter from "./routes/bulkRouter";
 
 const app = express();
 
@@ -24,5 +25,6 @@ app.use("/categories", bookCategoryRouter);
 app.use("/users", usersRouter);
 app.use("/login", loginRouter);
 app.use("/orders", orderRouter);
+app.use("/bulk", bulkRouter);
 
 export default app;

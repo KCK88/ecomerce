@@ -1,4 +1,4 @@
-import { model, Schema } from "mongoose";
+import mongoose, { model, Schema } from "mongoose";
 import {
   IBook,
   LightweightAuthorSchema,
@@ -168,6 +168,26 @@ export async function searchBooks(
   }
 
   return await Book.aggregate(pipeline).exec();
+}
+
+export async function addBulkBooks (books: IBook[]){
+  const operations = books.map((doc) => {
+
+    const convertId = (id) => new mongoose.Types.ObjectId(id.$oid);
+    console.log(doc)
+    doc.authors = doc.authors.map(a => ({ ...a, _id: convertId(a._id) }));
+    doc.categories = doc.categories.map(c => ({ ...c, _id: convertId(c._id) }));
+
+    return {
+      insertOne: {
+        document: doc
+      }
+    };
+  });
+
+
+
+  return await Book.bulkWrite(operations);
 }
 
 export default Book;
