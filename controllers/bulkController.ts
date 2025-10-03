@@ -17,15 +17,16 @@ export async function createBulkBooks(req: Request, res: Response) {
     const csvPath = path.join('data/csv-books', csvFilename);
 
     try {
-      await fs.mkdir('data/csv-books', { recursive: true });
+      await fs.mkdir('data/csv-books', {recursive: true});
       await fs.writeFile(csvPath, file.buffer);
     } catch (error) {
       console.error('Error saving cover image:', error);
-      return res.status(500).json({ message: 'Error saving cover image' });
+      return res.status(500).json({message: 'Error saving cover image'});
     }
 
-    const jsonArray=await csv().fromFile(csvPath);
+    const jsonArray = await csv().fromFile(csvPath);
     newBooks = await service.createBulkBooks(jsonArray);
+    await fs.unlink(csvPath);
 
   }
   if (file?.mimetype === "application/json") {
@@ -33,5 +34,5 @@ export async function createBulkBooks(req: Request, res: Response) {
     const bufferToString = fromBuffer?.toString('utf-8');
     newBooks = await service.createBulkBooks(JSON.parse(bufferToString))
   }
-  return res.status(200).json({newBooks, message: 'Successfully created books' });
+  return res.status(200).json({newBooks, message: 'Successfully created books'});
 }

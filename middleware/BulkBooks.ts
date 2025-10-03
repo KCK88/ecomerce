@@ -5,7 +5,7 @@ import { Request } from 'express';
 const multerStorage = multer.memoryStorage();
 
 const multerFilter = (
-  req: Request,
+  _req: Request,
   file: Express.Multer.File,
   cb: FileFilterCallback,
 ) => {
