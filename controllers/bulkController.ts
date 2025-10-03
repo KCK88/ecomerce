@@ -18,10 +18,14 @@ export async function createBulkBooks(req: Request, res: Response) {
 
     try {
       await fs.mkdir('data/csv-books', {recursive: true});
-      await fs.writeFile(csvPath, file.buffer);
+      const csvBuffer = file.buffer.toString('utf8')
+      const barReplacement = csvBuffer.toString().split('__v')[0].replace(/\//g, '.');
+      const joinV = barReplacement + '__v'
+      const headerReplaced = joinV + csvBuffer.toString().split('__v')[1]
+      await fs.writeFile(csvPath, headerReplaced);
     } catch (error) {
-      console.error('Error saving cover image:', error);
-      return res.status(500).json({message: 'Error saving cover image'});
+      console.error('Erro ao criar livros:', error);
+      return res.status(500).json({message: 'Erro ao criar livros'});
     }
 
     const jsonArray = await csv().fromFile(csvPath);
