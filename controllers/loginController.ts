@@ -4,7 +4,6 @@ import { cookieOptions, newToken } from "../auth/jwt";
 import service from "../services/loginService";
 
 export async function login(req: Request, res: Response) {
-  console.log(req.headers);
   const { email, password }: LoginType = req.body;
 
   if (!email || !password) {

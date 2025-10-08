@@ -1,6 +1,6 @@
-import { model, Schema } from "mongoose";
-import { booksOrderSchema, IOrder } from "../interfaces/IOrder";
-import { ReqOrder } from "../interfaces/ReqOrder";
+import {model, Schema} from "mongoose";
+import {booksOrderSchema, IOrder} from "../interfaces/IOrder";
+import {ReqOrder} from "../interfaces/ReqOrder";
 
 const orderSchema = new Schema<IOrder>(
   {
@@ -12,6 +12,7 @@ const orderSchema = new Schema<IOrder>(
       type: String,
       required: true,
     },
+    orderNumber: {type: "String"},
     address: {
       street: String,
       number: String,
@@ -30,8 +31,20 @@ const orderSchema = new Schema<IOrder>(
       },
     },
   },
-  { timestamps: true },
+  {timestamps: true},
 );
+
+orderSchema.pre('save', function(next) {
+
+  const timestamp = Date.now();
+
+
+  const objectId = this._id.toString();
+  const numericObjectId = parseInt(objectId.substring(0, 8), 16);
+  this.orderNumber = `${timestamp}${numericObjectId}`;
+
+  next();
+});
 
 const Order = model<IOrder>("Order", orderSchema);
 

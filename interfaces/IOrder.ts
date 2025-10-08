@@ -62,4 +62,5 @@ export interface IOrder {
   books: BooksOrder[];
   address: Address
   userId: string;
+  orderNumber: string;
 }
