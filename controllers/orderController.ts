@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { ReqOrder } from "../interfaces/ReqOrder";
 import service from "../services/orderService";
-import Order from "../models/orderModel";
+import {GetOrdersQuery} from "../interfaces/IOrder";
 
 export async function createOrder(
   req: Request,
@@ -18,12 +18,48 @@ export async function createOrder(
   }
 }
 
-export async function getOrders(
+export async function getOrdersById(
   req: Request,
   res: Response,
 ): Promise<Response> {
   const { userId } = req.params;
-  const order = await Order.where("userId").equals(userId);
+  const order = await service.getOrderById(userId);
+
+  return res.status(200).json(order);
+}
+export async function getOrders(
+  req: Request<object, object, object, GetOrdersQuery>,
+  res: Response,
+): Promise<Response> {
+  const {
+    userId,
+    orderNumber,
+    from,
+    to,
+    city,
+    state,
+    orderPage = 0,
+    orderLimit = 10,
+    orderSort = 'des',
+  } = req.query;
+
+  const page = orderPage.toString();
+  const limit = orderLimit.toString();
+  const sort = orderSort.toString();
+
+  const query: Record<string, any> = {};
+
+  if (userId) query.userId = userId;
+  if (orderNumber) query.orderNumber = orderNumber;
+  if (city) query['address.city'] = city;
+  if (state) query['address.state'] = state;
+
+  if (from || to) {
+    query.createdAt = {};
+    if (from) query.createdAt.$gte = new Date(from);
+    if (to) query.createdAt.$lte = new Date(to);
+  }
+  const order = await service.getOrders(query, page, limit, sort);
 
   return res.status(200).json(order);
 }

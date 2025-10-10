@@ -64,3 +64,16 @@ export interface IOrder {
   userId: string;
   orderNumber: string;
 }
+
+export interface GetOrdersQuery {
+  userId?: string;
+  orderNumber?: string;
+  from?: string;
+  to?: string;
+  city?: string;
+  state?: string;
+  bookId?: string;
+  orderPage?: string | number;
+  orderLimit?: string | number;
+  orderSort?: 'asc' | 'des' | string;
+}
