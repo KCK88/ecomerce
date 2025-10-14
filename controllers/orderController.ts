@@ -23,10 +23,19 @@ export async function getOrdersById(
   res: Response,
 ): Promise<Response> {
   const { userId } = req.params;
-  const order = await service.getOrderById(userId);
+  const order = await service.getOrdersById(userId);
 
   return res.status(200).json(order);
 }
+
+export async function getOrderById(req: Request, res: Response): Promise<Response> {
+  console.log(req.body);
+  const { orderId } = req.params;
+  const { status } = req.body;
+  const order = await service.getOrderById(orderId, status);
+  return res.status(200).json(order);
+}
+
 export async function getOrders(
   req: Request<object, object, object, GetOrdersQuery>,
   res: Response,

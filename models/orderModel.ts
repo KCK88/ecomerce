@@ -12,6 +12,11 @@ const orderSchema = new Schema<IOrder>(
       type: String,
       required: true,
     },
+    status: {
+      type: String,
+      enum: ["concluído", "pendente", "cancelado"],
+      default: "pendente",
+    },
     orderNumber: {type: "String"},
     address: {
       street: String,
@@ -62,10 +67,14 @@ export async function findOrder(query: Record<string, any>, page: string, limit:
 
   return await Order.find(query)
     .sort({createdAt: sort === 'desc' ? -1 : 1})
-    .skip(page * limit)
-    .limit(limit)
+    .skip(Number(page) * Number(limit))
+    .limit(Number(limit))
     .exec()
 }
 
-// export async function updateOrder(userId: string): Promise<IOrder[]> {}
+export async function updateOrder(orderId: string, status: string): Promise<IOrder | null> {
+  return await Order.findByIdAndUpdate(orderId, {status}, {returnDocument: 'after'}).exec();
+}
+
+
 export default Order;

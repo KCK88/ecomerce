@@ -15,11 +15,6 @@ export const booksOrderSchema = new Schema({
     type: Number,
     required: true,
   },
-  status: {
-    type: String,
-    enum: ["concluído", "pendente", "cancelado"],
-    default: "pendente",
-  },
   coverImage: {
     type: String,
   },
@@ -49,7 +44,6 @@ export interface BooksOrder {
   discount: number;
   bookId: string;
   userId: string;
-  status: string;
   createdAt: Date;
   updatedAt: Date;
   price: number;
@@ -63,6 +57,7 @@ export interface IOrder {
   address: Address
   userId: string;
   orderNumber: string;
+  status: string;
 }
 
 export interface GetOrdersQuery {

@@ -1,13 +1,16 @@
 import {ReqOrder} from "../interfaces/ReqOrder";
-import {findOrder, findOrderById, newOrder} from "../models/orderModel";
+import {findOrder, findOrderById, newOrder, updateOrder} from "../models/orderModel";
 import {createDiacriticInsensitiveRegex} from "../utils/diacriticInsensitive";
 
 async function createOrder(order: ReqOrder[]) {
   return await newOrder(order);
 }
 
-async function getOrderById(userId: string) {
+async function getOrdersById(userId: string) {
   return await findOrderById(userId);
+}
+async function getOrderById(orderId: string, status: string) {
+  return await updateOrder(orderId, status);
 }
 
 export async function getOrders(query: Record<string, any>, page: string, limit: string, sort: string) {
@@ -27,4 +30,4 @@ export async function getOrders(query: Record<string, any>, page: string, limit:
 
 }
 
-export default {createOrder, getOrderById, getOrders};
+export default {createOrder, getOrdersById, getOrderById, getOrders};
