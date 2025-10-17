@@ -28,11 +28,11 @@ export async function getOrdersById(
   return res.status(200).json(order);
 }
 
-export async function getOrderById(req: Request, res: Response): Promise<Response> {
+export async function updateOrder(req: Request, res: Response): Promise<Response> {
   console.log(req.body);
   const { orderId } = req.params;
   const { status } = req.body;
-  const order = await service.getOrderById(orderId, status);
+  const order = await service.updateOrder(orderId, status);
   return res.status(200).json(order);
 }
 

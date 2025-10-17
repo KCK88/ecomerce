@@ -29,8 +29,12 @@ export async function authorDelete(id: string) {
   await Author.findByIdAndDelete(id);
 }
 
-export async function authorsGet() {
-  return await Author.find();
+export async function authorsGet(query: Record<string, any>, page: string, limit: string, sort: string) {
+  return await Author.find(query)
+    .sort({createdAt: sort === 'desc' ? -1 : 1})
+    .skip(Number(page) * Number(limit))
+    .limit(Number(limit))
+    .exec()
 }
 export async function authorGetById(id: string) {
   return await Author.findById(id);

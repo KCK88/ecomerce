@@ -72,7 +72,7 @@ export async function findOrder(query: Record<string, any>, page: string, limit:
     .exec()
 }
 
-export async function updateOrder(orderId: string, status: string): Promise<IOrder | null> {
+export async function editOrder(orderId: string, status: string): Promise<IOrder | null> {
   return await Order.findByIdAndUpdate(orderId, {status}, {returnDocument: 'after'}).exec();
 }
 
